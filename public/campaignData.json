@@ -1,0 +1,2041 @@
+{
+  "reports": [
+    {
+      "id": "buyers",
+      "name": "Buyers Report",
+      "description": "First-time and repeat home buyers",
+      "color": "#2C537A",
+      "segments": [
+        {
+          "id": "active",
+          "name": "Active Lead",
+          "objective": "Convert inquiries into qualified buyers and improve funnel conversion by 50%",
+          "stages": {
+            "discovery": {
+              "campaigns": [
+                {
+                  "name": "Website Exit Intent Popup",
+                  "channel": "ma",
+                  "timing": "Real-time on exit intent",
+                  "objective": "Capture contact details before visitor leaves",
+                  "triggerCondition": "User moves cursor to close browser tab",
+                  "content": "Special offer or market report to capture email",
+                  "tools": ["OptinMonster", "HubSpot"],
+                  "estimatedReach": "500-1000/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "First Property Search Alert",
+                  "channel": "email",
+                  "timing": "Within 5 minutes",
+                  "objective": "Immediate engagement with property searchers",
+                  "triggerCondition": "User performs first property search on website",
+                  "content": "Instant search results with agent introduction",
+                  "tools": ["SendGrid", "Property Search API"],
+                  "estimatedReach": "300-700/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Thank You Email",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Acknowledge inquiry and set expectations",
+                  "triggerCondition": "Form submission received",
+                  "content": "Welcome email with next steps and what to expect",
+                  "tools": ["SendGrid", "HubSpot"],
+                  "estimatedReach": "200-600/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Welcome Message",
+                  "channel": "whatsapp",
+                  "timing": "+2 hours",
+                  "objective": "Provide instant communication channel",
+                  "triggerCondition": "2 hours after email if phone number provided",
+                  "content": "Quick WhatsApp intro with agent contact",
+                  "tools": ["Twilio WhatsApp", "Zapier"],
+                  "estimatedReach": "150-400/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "For You Personalized",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Share personalized property matches",
+                  "triggerCondition": "24 hours after initial contact",
+                  "content": "Curated property listings based on stated preferences",
+                  "tools": ["SendGrid", "Property Matching Engine"],
+                  "estimatedReach": "180-550/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Agent Introduction Video",
+                  "channel": "email",
+                  "timing": "+2 days",
+                  "objective": "Build personal connection with assigned agent",
+                  "triggerCondition": "48 hours after inquiry, agent assigned",
+                  "content": "Personal video introduction from agent with local expertise",
+                  "tools": ["Vidyard", "SendGrid"],
+                  "estimatedReach": "150-450/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Buyer's Guide Download",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Educate and build trust with valuable content",
+                  "triggerCondition": "3 days after inquiry if no viewing booked",
+                  "content": "Comprehensive first-time buyer guide PDF",
+                  "tools": ["SendGrid", "Content Library"],
+                  "estimatedReach": "120-380/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": [
+                {
+                  "name": "Agent Call Booking",
+                  "channel": "ma",
+                  "timing": "Immediate upon qualification",
+                  "objective": "Schedule first consultation call",
+                  "triggerCondition": "Lead marked as qualified by agent",
+                  "content": "Calendar link for consultation booking",
+                  "tools": ["Calendly", "HubSpot", "SendGrid"],
+                  "estimatedReach": "80-250/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rate Your Agent",
+                  "channel": "email",
+                  "timing": "+2 hours after call",
+                  "objective": "Gather feedback and improve service quality",
+                  "triggerCondition": "After first consultation call completed",
+                  "content": "5-question survey about agent interaction and satisfaction",
+                  "tools": ["Typeform", "SendGrid"],
+                  "estimatedReach": "70-220/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Property Match Alert",
+                  "channel": "email",
+                  "timing": "Daily digest at 9 AM",
+                  "objective": "Keep buyer engaged with fresh inventory",
+                  "triggerCondition": "New properties matching saved criteria",
+                  "content": "Daily email with 3-5 newly listed matching properties",
+                  "tools": ["Property Feed API", "SendGrid"],
+                  "estimatedReach": "300-900/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Hot Property Alert",
+                  "channel": "whatsapp",
+                  "timing": "Real-time",
+                  "objective": "Instant notification of perfect matches",
+                  "triggerCondition": "Property matches criteria and priced under budget",
+                  "content": "Instant WhatsApp with property photo and key details",
+                  "tools": ["Twilio WhatsApp", "Property Alert System"],
+                  "estimatedReach": "100-350/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Market Update Weekly",
+                  "channel": "email",
+                  "timing": "Every Monday 10 AM",
+                  "objective": "Position agent as market expert and keep buyer informed",
+                  "triggerCondition": "Every Monday morning",
+                  "content": "Local market stats, price trends, and neighborhood insights",
+                  "tools": ["SendGrid", "Market Data API", "Tableau"],
+                  "estimatedReach": "150-500/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Mortgage Pre-approval Reminder",
+                  "channel": "ma",
+                  "timing": "+3 days if not completed",
+                  "objective": "Ensure buyer can act quickly on properties",
+                  "triggerCondition": "3 days in qualified stage without pre-approval status",
+                  "content": "Pre-approval benefits, lender recommendations, and application link",
+                  "tools": ["HubSpot", "Zapier", "Lender Portal API"],
+                  "estimatedReach": "60-180/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Budget Discussion Follow-up",
+                  "channel": "email",
+                  "timing": "+7 days",
+                  "objective": "Refine search criteria and affordability",
+                  "triggerCondition": "One week after qualification",
+                  "content": "Budget review, affordability calculator, and financing options",
+                  "tools": ["SendGrid", "Mortgage Calculator"],
+                  "estimatedReach": "50-170/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Neighborhood Guides",
+                  "channel": "email",
+                  "timing": "+10 days",
+                  "objective": "Help buyer understand target areas",
+                  "triggerCondition": "10 days after qualification, based on search areas",
+                  "content": "Detailed neighborhood guides: schools, amenities, transport",
+                  "tools": ["SendGrid", "Neighborhood Data Platform"],
+                  "estimatedReach": "45-150/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Video Property Tours",
+                  "channel": "email",
+                  "timing": "Bi-weekly",
+                  "objective": "Provide virtual viewing experience",
+                  "triggerCondition": "Every 2 weeks",
+                  "content": "Curated video tours of available properties",
+                  "tools": ["Vimeo", "SendGrid"],
+                  "estimatedReach": "40-140/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Open House Invitations",
+                  "channel": "email",
+                  "timing": "Weekly on Wednesday",
+                  "objective": "Drive attendance to open houses",
+                  "triggerCondition": "Open houses scheduled for weekend",
+                  "content": "This weekend's open houses in your preferred areas",
+                  "tools": ["SendGrid", "Event Management System"],
+                  "estimatedReach": "80-280/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Buyer Success Stories",
+                  "channel": "email",
+                  "timing": "+14 days",
+                  "objective": "Build confidence through social proof",
+                  "triggerCondition": "14 days after qualification",
+                  "content": "Testimonials and case studies from recent buyers",
+                  "tools": ["SendGrid", "Testimonial Library"],
+                  "estimatedReach": "35-120/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Re-engagement Check-in",
+                  "channel": "ma",
+                  "timing": "+14 days no activity",
+                  "objective": "Reconnect with quiet qualified leads",
+                  "triggerCondition": "14 days without property views or responses",
+                  "content": "Personalized check-in with market update and new listings",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "30-100/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Agent Personal Call",
+                  "channel": "ma",
+                  "timing": "+21 days",
+                  "objective": "Personal touch to maintain relationship",
+                  "triggerCondition": "21 days in qualified stage",
+                  "content": "Task created for agent to make personal call",
+                  "tools": ["HubSpot Tasks", "CRM"],
+                  "estimatedReach": "25-90/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "viewing": {
+              "campaigns": [
+                {
+                  "name": "Viewing Confirmation Email",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Confirm viewing details and reduce no-shows",
+                  "triggerCondition": "Viewing scheduled in system",
+                  "content": "Confirmation with property address, time, agent name, and preparation tips",
+                  "tools": ["SendGrid", "Calendar API"],
+                  "estimatedReach": "60-200/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Viewing Reminder",
+                  "channel": "whatsapp",
+                  "timing": "-24 hours",
+                  "objective": "Reduce no-shows with timely reminder",
+                  "triggerCondition": "24 hours before scheduled viewing",
+                  "content": "Friendly reminder with address, time, and agent contact",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "55-190/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Pre-Viewing Checklist",
+                  "channel": "email",
+                  "timing": "-2 hours",
+                  "objective": "Prepare buyer for productive viewing",
+                  "triggerCondition": "2 hours before viewing",
+                  "content": "What to look for, questions to ask, and red flags to notice",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "50-180/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Post-Viewing Feedback Survey",
+                  "channel": "email",
+                  "timing": "+2 hours",
+                  "objective": "Capture immediate impressions and interest level",
+                  "triggerCondition": "2 hours after viewing completion",
+                  "content": "Quick survey: property rating, interest level, concerns",
+                  "tools": ["Typeform", "SendGrid", "CRM Integration"],
+                  "estimatedReach": "55-185/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Quick Reaction",
+                  "channel": "whatsapp",
+                  "timing": "+30 minutes",
+                  "objective": "Get instant feedback while fresh",
+                  "triggerCondition": "30 minutes after viewing",
+                  "content": "Quick WhatsApp: thumbs up/down reaction request",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "50-170/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Similar Properties Suggestion",
+                  "channel": "email",
+                  "timing": "+4 hours",
+                  "objective": "Keep momentum with alternatives",
+                  "triggerCondition": "4 hours after viewing",
+                  "content": "3-5 similar properties based on what they just saw",
+                  "tools": ["SendGrid", "Property Recommendation Engine"],
+                  "estimatedReach": "45-160/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Agent Follow-up Call Task",
+                  "channel": "ma",
+                  "timing": "+1 day",
+                  "objective": "Personal discussion of viewing experience",
+                  "triggerCondition": "Next business day after viewing",
+                  "content": "Task created for agent to call and discuss",
+                  "tools": ["HubSpot", "CRM Tasks"],
+                  "estimatedReach": "50-175/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Property Comparison Report",
+                  "channel": "email",
+                  "timing": "+2 days",
+                  "objective": "Help buyer make informed decision",
+                  "triggerCondition": "2 days after viewing if viewed multiple properties",
+                  "content": "Side-by-side comparison of viewed properties",
+                  "tools": ["SendGrid", "Comparison Tool"],
+                  "estimatedReach": "30-110/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Neighborhood Deep Dive",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Provide detailed area information",
+                  "triggerCondition": "3 days after viewing if still interested",
+                  "content": "Comprehensive neighborhood report for viewed property area",
+                  "tools": ["SendGrid", "Location Intelligence Platform"],
+                  "estimatedReach": "25-95/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Re-viewing Invitation",
+                  "channel": "email",
+                  "timing": "+7 days",
+                  "objective": "Offer second viewing opportunity",
+                  "triggerCondition": "7 days after initial viewing if high interest indicated",
+                  "content": "Invitation to revisit property with different time/perspective",
+                  "tools": ["SendGrid", "Calendar API"],
+                  "estimatedReach": "20-75/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "offer": {
+              "campaigns": [
+                {
+                  "name": "Making an Offer Guide",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Educate buyer on offer process",
+                  "triggerCondition": "Buyer expresses intent to make offer",
+                  "content": "Comprehensive guide: offer strategy, terms, negotiation tips",
+                  "tools": ["SendGrid", "Document Library"],
+                  "estimatedReach": "20-80/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Offer Strategy Call",
+                  "channel": "ma",
+                  "timing": "+2 hours",
+                  "objective": "Schedule strategy session with agent",
+                  "triggerCondition": "2 hours after offer intent expressed",
+                  "content": "Calendar invite for offer strategy discussion",
+                  "tools": ["Calendly", "HubSpot"],
+                  "estimatedReach": "18-75/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Comparative Market Analysis",
+                  "channel": "email",
+                  "timing": "+4 hours",
+                  "objective": "Support offer with market data",
+                  "triggerCondition": "Before offer submission",
+                  "content": "CMA report showing comparable sales and pricing recommendation",
+                  "tools": ["SendGrid", "MLS Data", "CMA Software"],
+                  "estimatedReach": "18-70/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Offer Submission Confirmation",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Confirm offer submitted and set expectations",
+                  "triggerCondition": "Offer officially submitted",
+                  "content": "Confirmation of offer details, next steps, and typical timeline",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "15-65/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Offer Status Updates",
+                  "channel": "whatsapp",
+                  "timing": "As updates occur",
+                  "objective": "Keep buyer informed in real-time",
+                  "triggerCondition": "Any status change on offer",
+                  "content": "Instant updates on offer status, counter-offers, acceptance",
+                  "tools": ["Twilio WhatsApp", "Transaction Management System"],
+                  "estimatedReach": "15-60/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Counter-Offer Negotiation Support",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Guide through counter-offer decisions",
+                  "triggerCondition": "Counter-offer received",
+                  "content": "Counter-offer analysis and response strategy",
+                  "tools": ["SendGrid", "Negotiation Tools"],
+                  "estimatedReach": "10-45/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Competing Offers Alert",
+                  "channel": "whatsapp",
+                  "timing": "Immediate",
+                  "objective": "Inform of competitive situation",
+                  "triggerCondition": "Multiple offers on property detected",
+                  "content": "Alert about competition and best & final strategies",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "8-35/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "Congratulations - Offer Accepted!",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Celebrate success and outline next steps",
+                  "triggerCondition": "Offer accepted by seller",
+                  "content": "Celebration email with clear next steps in closing process",
+                  "tools": ["SendGrid", "Celebration Templates"],
+                  "estimatedReach": "10-40/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Celebration Message",
+                  "channel": "whatsapp",
+                  "timing": "+5 minutes",
+                  "objective": "Personal congratulations from agent",
+                  "triggerCondition": "5 minutes after offer acceptance",
+                  "content": "Personal congratulations message from agent with next call",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "10-38/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Closing Process Timeline",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Set clear expectations for closing",
+                  "triggerCondition": "Day after offer acceptance",
+                  "content": "Visual timeline of closing process with key milestones",
+                  "tools": ["SendGrid", "Timeline Tool"],
+                  "estimatedReach": "10-35/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Home Inspection Preparation",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Prepare for inspection phase",
+                  "triggerCondition": "3 days after offer acceptance",
+                  "content": "What to expect during inspection, common issues, negotiation tips",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "9-33/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Recommended Service Providers",
+                  "channel": "email",
+                  "timing": "+5 days",
+                  "objective": "Connect with trusted service providers",
+                  "triggerCondition": "5 days after acceptance",
+                  "content": "List of recommended movers, contractors, utilities, insurance",
+                  "tools": ["SendGrid", "Partner Directory"],
+                  "estimatedReach": "9-30/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Weekly Closing Progress Update",
+                  "channel": "email",
+                  "timing": "Weekly",
+                  "objective": "Keep buyer informed throughout closing",
+                  "triggerCondition": "Every week until closing",
+                  "content": "Progress report on inspections, appraisal, financing, title",
+                  "tools": ["SendGrid", "Transaction Management"],
+                  "estimatedReach": "25-95/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Pre-Closing Checklist",
+                  "channel": "email",
+                  "timing": "-7 days before closing",
+                  "objective": "Ensure all closing requirements met",
+                  "triggerCondition": "One week before scheduled closing",
+                  "content": "Checklist of items to complete before closing day",
+                  "tools": ["SendGrid", "Checklist Tool"],
+                  "estimatedReach": "8-28/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Closing Day Preparation",
+                  "channel": "whatsapp",
+                  "timing": "-24 hours before closing",
+                  "objective": "Final reminders for closing day",
+                  "triggerCondition": "Day before closing",
+                  "content": "What to bring, where to go, what to expect at closing",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "8-27/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Welcome Home Package",
+                  "channel": "email",
+                  "timing": "On closing day",
+                  "objective": "Celebrate home purchase completion",
+                  "triggerCondition": "After closing documents signed",
+                  "content": "Congratulations, home care tips, warranty info, agent availability",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "7-25/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Post-Closing Follow-up",
+                  "channel": "ma",
+                  "timing": "+7 days after closing",
+                  "objective": "Ensure satisfaction and request referrals",
+                  "triggerCondition": "One week after closing",
+                  "content": "Check-in on settling in, request review/referral, ongoing support",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "7-24/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "30-Day Home Anniversary",
+                  "channel": "email",
+                  "timing": "+30 days",
+                  "objective": "Maintain relationship for future referrals",
+                  "triggerCondition": "30 days after closing",
+                  "content": "One-month homeowner check-in and home maintenance tips",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "6-22/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "dormant",
+          "name": "Dormant Open Lead",
+          "objective": "Re-engage inactive leads and improve funnel conversion by 50%",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "We Haven't Heard From You",
+                  "channel": "ma",
+                  "timing": "+30 days no activity",
+                  "objective": "Reconnect with dormant lead",
+                  "triggerCondition": "30 days without any engagement",
+                  "content": "Personalized re-engagement with market updates and new opportunities",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "80-200/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Market Changed Since You Looked",
+                  "channel": "email",
+                  "timing": "+35 days",
+                  "objective": "Highlight market changes as reason to re-engage",
+                  "triggerCondition": "35 days dormant",
+                  "content": "Recent market shifts, price changes, new inventory in their areas",
+                  "tools": ["SendGrid", "Market Data"],
+                  "estimatedReach": "70-180/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "New Properties Just Listed",
+                  "channel": "email",
+                  "timing": "+40 days",
+                  "objective": "Entice with new inventory",
+                  "triggerCondition": "40 days dormant + new matching properties",
+                  "content": "Fresh listings that match their original search criteria",
+                  "tools": ["SendGrid", "Property Feed"],
+                  "estimatedReach": "60-160/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Quick Check-in",
+                  "channel": "whatsapp",
+                  "timing": "+45 days",
+                  "objective": "Low-pressure touchpoint via preferred channel",
+                  "triggerCondition": "45 days dormant",
+                  "content": "Casual check-in asking if still looking or if circumstances changed",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "50-140/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rate Drop Alert",
+                  "channel": "email",
+                  "timing": "When rates drop",
+                  "objective": "Re-engage with timely market news",
+                  "triggerCondition": "Significant mortgage rate decrease detected",
+                  "content": "Mortgage rate drop notification with affordability impact",
+                  "tools": ["SendGrid", "Rate Monitor API"],
+                  "estimatedReach": "30-90/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": [
+                {
+                  "name": "We Haven't Heard From You",
+                  "channel": "ma",
+                  "timing": "+21 days no activity",
+                  "objective": "Re-engage qualified but quiet leads",
+                  "triggerCondition": "21 days without engagement in qualified stage",
+                  "content": "Check-in with agent, new matches, and market update",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "40-120/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Still Searching Question",
+                  "channel": "email",
+                  "timing": "+25 days",
+                  "objective": "Understand current status and needs",
+                  "triggerCondition": "25 days dormant in qualified",
+                  "content": "Survey: still looking? Timeline changed? How can we help?",
+                  "tools": ["Typeform", "SendGrid"],
+                  "estimatedReach": "35-110/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Agent Personal Outreach",
+                  "channel": "ma",
+                  "timing": "+30 days",
+                  "objective": "Personal touch from agent",
+                  "triggerCondition": "30 days dormant",
+                  "content": "Task for agent to make personal call",
+                  "tools": ["HubSpot", "CRM"],
+                  "estimatedReach": "30-95/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "viewing": {
+              "campaigns": [
+                {
+                  "name": "We Haven't Heard From You",
+                  "channel": "ma",
+                  "timing": "+14 days no activity",
+                  "objective": "Follow up after viewing silence",
+                  "triggerCondition": "14 days since last viewing, no new viewing booked",
+                  "content": "Check-in on viewed properties, offer to schedule more viewings",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "25-80/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Similar Properties Still Available",
+                  "channel": "email",
+                  "timing": "+18 days",
+                  "objective": "Revive interest with alternatives",
+                  "triggerCondition": "18 days after viewing, no further action",
+                  "content": "Properties similar to what they viewed, still on market",
+                  "tools": ["SendGrid", "Property Matching"],
+                  "estimatedReach": "20-70/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "offer": {
+              "campaigns": [
+                {
+                  "name": "We Haven't Heard From You",
+                  "channel": "ma",
+                  "timing": "+7 days no activity",
+                  "objective": "Check status after offer stage goes quiet",
+                  "triggerCondition": "7 days since offer discussion, no offer made",
+                  "content": "Check-in on offer decision, offer support, address concerns",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "15-50/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        },
+        {
+          "id": "referral-active",
+          "name": "Referral - Active Lead",
+          "objective": "Improve group referrals by 2m per month",
+          "stages": {
+            "discovery": {
+              "campaigns": [
+                {
+                  "name": "Referral Source Thank You",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Thank referrer and confirm receipt",
+                  "triggerCondition": "Referral received from partner/agent",
+                  "content": "Thank you to referrer with confirmation we've contacted referral",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "30-90/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Referral Welcome Email",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Acknowledge referral relationship",
+                  "triggerCondition": "Referral lead created",
+                  "content": "Welcome mentioning referrer, building trust through connection",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "40-110/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Manual Agent Referral Notification",
+                  "channel": "email",
+                  "timing": "+1 hour",
+                  "objective": "Alert receiving agent of referral lead",
+                  "triggerCondition": "Referral assigned to agent (Lomond, Octopus, Open Hub)",
+                  "content": "Referral details, source context, and priority flag for agent",
+                  "tools": ["SendGrid", "CRM"],
+                  "estimatedReach": "40-110/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": [
+                {
+                  "name": "Lomond Manual Agent Referral Update",
+                  "channel": "ma",
+                  "timing": "At qualification",
+                  "objective": "Update referral partner on progress",
+                  "triggerCondition": "Referral qualified",
+                  "content": "Automated update to Lomond system on referral qualification",
+                  "tools": ["Lomond API", "Zapier"],
+                  "estimatedReach": "15-50/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Manual Agent Referral Follow-up",
+                  "channel": "email",
+                  "timing": "+7 days",
+                  "objective": "Keep referring agent informed",
+                  "triggerCondition": "7 days after qualification",
+                  "content": "Progress update to referring agent (Octopus, Open Hub)",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "12-45/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "viewing": {
+              "campaigns": [
+                {
+                  "name": "Manual Agent Referral - Viewing Update",
+                  "channel": "email",
+                  "timing": "After viewing",
+                  "objective": "Update referring agent on viewing activity",
+                  "triggerCondition": "First viewing completed",
+                  "content": "Viewing feedback and progress update for referring agent",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "10-40/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "offer": {
+              "campaigns": [
+                {
+                  "name": "Manual Agent Referral - Offer Status",
+                  "channel": "email",
+                  "timing": "When offer made",
+                  "objective": "Keep referring agent in loop",
+                  "triggerCondition": "Offer submitted on property",
+                  "content": "Offer details and status for referring agent",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "7-30/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "Manual Agent Referral - Deal Closed",
+                  "channel": "email",
+                  "timing": "At closing",
+                  "objective": "Thank referrer and confirm commission",
+                  "triggerCondition": "Deal closed",
+                  "content": "Success notification with referral fee details",
+                  "tools": ["SendGrid", "Commission System"],
+                  "estimatedReach": "5-25/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "deal-client",
+          "name": "Deal - Client",
+          "objective": "Generate 2m from reheated leads",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": []
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "6-Month Home Anniversary",
+                  "channel": "email",
+                  "timing": "+6 months after closing",
+                  "objective": "Maintain relationship for future business",
+                  "triggerCondition": "6 months since closing",
+                  "content": "Home care tips, market update, home value estimate",
+                  "tools": ["SendGrid", "AVM API"],
+                  "estimatedReach": "15-50/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Annual Home Value Update",
+                  "channel": "email",
+                  "timing": "Yearly",
+                  "objective": "Show home appreciation and stay top of mind",
+                  "triggerCondition": "Each year on closing anniversary",
+                  "content": "Current market value, equity position, market trends",
+                  "tools": ["SendGrid", "AVM API", "Market Data"],
+                  "estimatedReach": "12-45/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Referral Request - Past Client",
+                  "channel": "email",
+                  "timing": "+12 months",
+                  "objective": "Generate referrals from satisfied clients",
+                  "triggerCondition": "One year after closing",
+                  "content": "Request for referrals with incentive program details",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "10-40/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Quarterly Market Newsletter",
+                  "channel": "email",
+                  "timing": "Quarterly",
+                  "objective": "Stay top of mind with market updates",
+                  "triggerCondition": "Every quarter",
+                  "content": "Market trends, neighborhood updates, and tips",
+                  "tools": ["SendGrid", "Market Data"],
+                  "estimatedReach": "30-110/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "referral-deal-client",
+          "name": "Referral - Deal Client",
+          "objective": "Improve group referrals by 2m per month",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": []
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "Referral Source Commission Notice",
+                  "channel": "email",
+                  "timing": "At closing",
+                  "objective": "Confirm commission to referring partner",
+                  "triggerCondition": "Referral deal closes",
+                  "content": "Commission confirmation and thanks for referral",
+                  "tools": ["SendGrid", "Commission System"],
+                  "estimatedReach": "5-20/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Request More Referrals",
+                  "channel": "email",
+                  "timing": "+30 days",
+                  "objective": "Encourage continued referrals",
+                  "triggerCondition": "30 days after referral closing",
+                  "content": "Thank you for successful referral, ask for more",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "5-18/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "recently-closed",
+          "name": "Recently Closed Lead",
+          "objective": "Generate 2m from reheated leads and reduce portal dependence",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Time to Sell Timing Alert",
+                  "channel": "email",
+                  "timing": "+3 years after purchase",
+                  "objective": "Re-engage when typical selling timeline",
+                  "triggerCondition": "3-5 years since last purchase closed",
+                  "content": "Market opportunity to sell, home value appreciation",
+                  "tools": ["SendGrid", "AVM API"],
+                  "estimatedReach": "20-70/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Life Changes Survey",
+                  "channel": "email",
+                  "timing": "+4 years",
+                  "objective": "Identify reasons to move",
+                  "triggerCondition": "4 years since closing",
+                  "content": "Survey about family changes, job changes, space needs",
+                  "tools": ["Typeform", "SendGrid"],
+                  "estimatedReach": "15-55/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        },
+        {
+          "id": "historic-closed",
+          "name": "Historic Closed Lead",
+          "objective": "Generate 2m from reheated leads and reduce portal dependence",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Long-term Check-in",
+                  "channel": "email",
+                  "timing": "+7+ years",
+                  "objective": "Reconnect with very old clients",
+                  "triggerCondition": "7+ years since last transaction",
+                  "content": "Checking in, market update, referral request",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "30-100/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Market Boom Alert",
+                  "channel": "email",
+                  "timing": "When market favorable",
+                  "objective": "Re-engage when selling makes sense",
+                  "triggerCondition": "Strong seller's market detected",
+                  "content": "Market opportunity notification with home value",
+                  "tools": ["SendGrid", "Market Monitor", "AVM"],
+                  "estimatedReach": "15-50/month",
+                  "activeMonths": [3, 4, 5, 6, 7, 8, 9, 10]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "buyers-investors",
+      "name": "Buyers - Investors Report",
+      "description": "Investment property buyers",
+      "color": "#7BA0B2",
+      "segments": [
+        {
+          "id": "active-investor",
+          "name": "Active Investor Lead",
+          "objective": "Convert investor inquiries into profitable deals",
+          "stages": {
+            "discovery": {
+              "campaigns": [
+                {
+                  "name": "Investment Opportunity Alert",
+                  "channel": "email",
+                  "timing": "Real-time",
+                  "objective": "Notify of high-yield properties",
+                  "triggerCondition": "Property matching investment criteria listed",
+                  "content": "Investment property with ROI projections",
+                  "tools": ["SendGrid", "Investment Analysis Tool"],
+                  "estimatedReach": "40-120/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Market Investment Report",
+                  "channel": "email",
+                  "timing": "Monthly",
+                  "objective": "Share investment market trends",
+                  "triggerCondition": "First of each month",
+                  "content": "Rental yields, appreciation forecasts, emerging areas",
+                  "tools": ["SendGrid", "Market Analytics"],
+                  "estimatedReach": "50-150/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Investment Welcome Pack",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Share investment-focused resources",
+                  "triggerCondition": "Investor inquiry received",
+                  "content": "ROI calculators, market analysis, portfolio examples",
+                  "tools": ["SendGrid", "ROI Calculator"],
+                  "estimatedReach": "25-85/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Investor Connect",
+                  "channel": "whatsapp",
+                  "timing": "+3 hours",
+                  "objective": "Personal connection with investment specialist",
+                  "triggerCondition": "3 hours after inquiry",
+                  "content": "Direct line to investment property specialist",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "20-75/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Portfolio Strategy Call",
+                  "channel": "ma",
+                  "timing": "+1 day",
+                  "objective": "Schedule investment strategy consultation",
+                  "triggerCondition": "24 hours after inquiry",
+                  "content": "Book consultation to discuss investment goals and strategy",
+                  "tools": ["Calendly", "HubSpot"],
+                  "estimatedReach": "20-70/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Tax Benefits Guide",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Educate on investment property tax advantages",
+                  "triggerCondition": "3 days after inquiry",
+                  "content": "Depreciation, deductions, 1031 exchanges guide",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "18-65/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": [
+                {
+                  "name": "Investment Property Portfolio",
+                  "channel": "email",
+                  "timing": "Weekly",
+                  "objective": "Share curated investment opportunities",
+                  "triggerCondition": "Every Tuesday",
+                  "content": "5-10 investment properties with full analysis",
+                  "tools": ["SendGrid", "Investment Database"],
+                  "estimatedReach": "80-250/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Cash Flow Analysis",
+                  "channel": "email",
+                  "timing": "Upon request",
+                  "objective": "Provide detailed ROI projections",
+                  "triggerCondition": "Investor requests analysis on property",
+                  "content": "Full cash flow, ROI, cap rate, and appreciation analysis",
+                  "tools": ["SendGrid", "Financial Modeling Tool"],
+                  "estimatedReach": "30-90/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Deal Alert",
+                  "channel": "whatsapp",
+                  "timing": "Immediate",
+                  "objective": "Alert of time-sensitive investment opportunities",
+                  "triggerCondition": "Below-market property or distressed sale",
+                  "content": "Urgent investment opportunity with quick decision needed",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "25-75/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rental Market Trends",
+                  "channel": "email",
+                  "timing": "Quarterly",
+                  "objective": "Share rental market insights",
+                  "triggerCondition": "Start of each quarter",
+                  "content": "Rental demand, vacancy rates, rental price trends",
+                  "tools": ["SendGrid", "Rental Market Data"],
+                  "estimatedReach": "70-200/month",
+                  "activeMonths": [1, 4, 7, 10]
+                },
+                {
+                  "name": "Financing Options Update",
+                  "channel": "email",
+                  "timing": "+5 days",
+                  "objective": "Present investment financing strategies",
+                  "triggerCondition": "5 days in qualified stage",
+                  "content": "Investment loans, portfolio loans, creative financing",
+                  "tools": ["SendGrid", "Lender Network"],
+                  "estimatedReach": "22-68/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "viewing": {
+              "campaigns": [
+                {
+                  "name": "Investment Property Tour Confirmation",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Confirm property tour with investment focus",
+                  "triggerCondition": "Tour scheduled",
+                  "content": "Tour details with investment-specific inspection checklist",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "18-60/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Property Inspection Checklist",
+                  "channel": "email",
+                  "timing": "-2 hours",
+                  "objective": "Guide investor on what to evaluate",
+                  "triggerCondition": "2 hours before tour",
+                  "content": "Investment property inspection checklist: structure, systems, rental potential",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "16-55/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rental Comparables Report",
+                  "channel": "email",
+                  "timing": "+4 hours",
+                  "objective": "Show rental income potential",
+                  "triggerCondition": "After property tour",
+                  "content": "Comparable rental properties and income projections",
+                  "tools": ["SendGrid", "Rental Comp Tool"],
+                  "estimatedReach": "15-52/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Investment Deal Analysis",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Provide complete investment analysis",
+                  "triggerCondition": "Day after tour",
+                  "content": "Full deal analysis: purchase, rehab, rental income, ROI",
+                  "tools": ["SendGrid", "Deal Analysis Software"],
+                  "estimatedReach": "14-48/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "offer": {
+              "campaigns": [
+                {
+                  "name": "Investment Offer Strategy",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Guide on making competitive investment offer",
+                  "triggerCondition": "Investor ready to make offer",
+                  "content": "Offer strategy for investment properties: price, terms, contingencies",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "10-35/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Due Diligence Checklist",
+                  "channel": "email",
+                  "timing": "+2 hours",
+                  "objective": "Ensure proper investment due diligence",
+                  "triggerCondition": "Offer submitted",
+                  "content": "Investment due diligence: inspections, title, tenants, financials",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "9-32/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Offer Updates",
+                  "channel": "whatsapp",
+                  "timing": "As needed",
+                  "objective": "Real-time offer status updates",
+                  "triggerCondition": "Any offer status change",
+                  "content": "Instant updates on offer, counter-offers, acceptance",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "9-30/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "Investment Purchase Congratulations",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Celebrate acquisition and outline next steps",
+                  "triggerCondition": "Offer accepted",
+                  "content": "Congratulations with closing timeline and property management setup",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "8-28/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Property Management Options",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Connect with property management services",
+                  "triggerCondition": "Day after acceptance",
+                  "content": "Property management companies, self-management tools, tenant screening",
+                  "tools": ["SendGrid", "PM Network"],
+                  "estimatedReach": "8-26/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Renovation Contractor List",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Connect with renovation contractors",
+                  "triggerCondition": "If property needs work",
+                  "content": "Trusted contractors, cost estimates, value-add strategies",
+                  "tools": ["SendGrid", "Contractor Network"],
+                  "estimatedReach": "6-22/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "First Tenant Screening Guide",
+                  "channel": "email",
+                  "timing": "+1 week",
+                  "objective": "Help find quality tenants",
+                  "triggerCondition": "One week after closing",
+                  "content": "Tenant screening process, lease templates, rental pricing",
+                  "tools": ["SendGrid", "Tenant Screening Services"],
+                  "estimatedReach": "7-24/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Next Investment Opportunity",
+                  "channel": "email",
+                  "timing": "+30 days",
+                  "objective": "Encourage portfolio expansion",
+                  "triggerCondition": "30 days after closing",
+                  "content": "New investment opportunities matching portfolio strategy",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "6-20/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "portfolio-client",
+          "name": "Portfolio Client",
+          "objective": "Grow existing investor relationships",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": []
+            },
+            "qualified": {
+              "campaigns": [
+                {
+                  "name": "Quarterly Portfolio Review",
+                  "channel": "email",
+                  "timing": "Quarterly",
+                  "objective": "Review portfolio performance",
+                  "triggerCondition": "Every quarter",
+                  "content": "Portfolio performance, appreciation, cash flow analysis",
+                  "tools": ["SendGrid", "Portfolio Analytics"],
+                  "estimatedReach": "25-80/month",
+                  "activeMonths": [1, 4, 7, 10]
+                },
+                {
+                  "name": "New Investment Opportunities",
+                  "channel": "email",
+                  "timing": "Bi-weekly",
+                  "objective": "Present expansion opportunities",
+                  "triggerCondition": "Every 2 weeks",
+                  "content": "Hand-picked investment opportunities for portfolio growth",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "40-120/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Market Trends for Investors",
+                  "channel": "email",
+                  "timing": "Monthly",
+                  "objective": "Keep investors informed of market changes",
+                  "triggerCondition": "First Monday of month",
+                  "content": "Investment market trends, emerging areas, exit strategies",
+                  "tools": ["SendGrid", "Market Intelligence"],
+                  "estimatedReach": "30-95/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "1031 Exchange Opportunities",
+                  "channel": "email",
+                  "timing": "When applicable",
+                  "objective": "Maximize tax-deferred growth",
+                  "triggerCondition": "Client considering selling property",
+                  "content": "1031 exchange properties and process guidance",
+                  "tools": ["SendGrid", "1031 Exchange Network"],
+                  "estimatedReach": "10-35/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        },
+        {
+          "id": "dormant-investor",
+          "name": "Dormant Investor Lead",
+          "objective": "Re-engage inactive investors",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Market Shift Alert",
+                  "channel": "email",
+                  "timing": "+30 days no activity",
+                  "objective": "Re-engage with market changes",
+                  "triggerCondition": "30 days dormant + significant market change",
+                  "content": "Major market shifts affecting investment opportunities",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "20-60/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "High-Yield Properties Available",
+                  "channel": "email",
+                  "timing": "+40 days",
+                  "objective": "Entice with exceptional deals",
+                  "triggerCondition": "40 days dormant",
+                  "content": "Exceptionally high-yield investment properties",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "18-55/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Quick Investor Check",
+                  "channel": "whatsapp",
+                  "timing": "+50 days",
+                  "objective": "Casual re-engagement",
+                  "triggerCondition": "50 days dormant",
+                  "content": "Quick check: still looking to invest or timing changed?",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "15-48/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tenants",
+      "name": "Tenants Report",
+      "description": "Rental property seekers",
+      "color": "#2C537A",
+      "segments": [
+        {
+          "id": "active-tenant",
+          "name": "Active Tenant Lead",
+          "objective": "Convert rental inquiries into signed leases",
+          "stages": {
+            "discovery": {
+              "campaigns": [
+                {
+                  "name": "Rental Search Alert Setup",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Set up automated rental alerts",
+                  "triggerCondition": "Rental search initiated",
+                  "content": "Configure rental alerts based on preferences",
+                  "tools": ["SendGrid", "Rental Alert System"],
+                  "estimatedReach": "60-180/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Rental Welcome Email",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Welcome and set expectations",
+                  "triggerCondition": "Rental inquiry submitted",
+                  "content": "Welcome, available rentals, application process overview",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "80-220/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Rental Contact",
+                  "channel": "whatsapp",
+                  "timing": "+2 hours",
+                  "objective": "Quick response channel",
+                  "triggerCondition": "2 hours after inquiry",
+                  "content": "Direct WhatsApp line to rental specialist",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "70-200/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Available Rentals Showcase",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Show matching rental properties",
+                  "triggerCondition": "24 hours after inquiry",
+                  "content": "5-10 rentals matching their criteria with photos and details",
+                  "tools": ["SendGrid", "Rental Database"],
+                  "estimatedReach": "75-210/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rental Application Guide",
+                  "channel": "email",
+                  "timing": "+2 days",
+                  "objective": "Prepare tenant for application",
+                  "triggerCondition": "2 days after inquiry",
+                  "content": "What's needed: income proof, references, credit check",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "65-190/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": [
+                {
+                  "name": "New Rental Listings Alert",
+                  "channel": "email",
+                  "timing": "Daily",
+                  "objective": "Keep tenant engaged with new listings",
+                  "triggerCondition": "New rentals matching criteria",
+                  "content": "Daily digest of new rental listings",
+                  "tools": ["SendGrid", "Rental Feed"],
+                  "estimatedReach": "200-550/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Hot Rental Alert",
+                  "channel": "whatsapp",
+                  "timing": "Real-time",
+                  "objective": "Immediate notification of great rentals",
+                  "triggerCondition": "Perfect match rental listed",
+                  "content": "Instant alert: great rental just listed",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "80-240/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Application Pre-Approval",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Get tenant pre-approved for faster applications",
+                  "triggerCondition": "3 days in qualified",
+                  "content": "Get pre-approved to secure rentals faster",
+                  "tools": ["SendGrid", "Screening Platform"],
+                  "estimatedReach": "50-160/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Neighborhood Rental Guides",
+                  "channel": "email",
+                  "timing": "+5 days",
+                  "objective": "Help tenant choose best area",
+                  "triggerCondition": "5 days in qualified",
+                  "content": "Neighborhood guides for their target areas",
+                  "tools": ["SendGrid", "Neighborhood Data"],
+                  "estimatedReach": "45-145/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rental Market Insights",
+                  "channel": "email",
+                  "timing": "Weekly",
+                  "objective": "Educate on rental market",
+                  "triggerCondition": "Every Friday",
+                  "content": "Rental price trends, availability, best time to apply",
+                  "tools": ["SendGrid", "Market Data"],
+                  "estimatedReach": "70-210/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "viewing": {
+              "campaigns": [
+                {
+                  "name": "Rental Viewing Confirmation",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Confirm rental viewing",
+                  "triggerCondition": "Viewing scheduled",
+                  "content": "Viewing confirmation with property address and what to bring",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "50-170/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Viewing Reminder",
+                  "channel": "whatsapp",
+                  "timing": "-24 hours",
+                  "objective": "Remind about viewing",
+                  "triggerCondition": "Day before viewing",
+                  "content": "Reminder: rental viewing tomorrow with address",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "48-165/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rental Viewing Checklist",
+                  "channel": "email",
+                  "timing": "-2 hours",
+                  "objective": "Prepare tenant for viewing",
+                  "triggerCondition": "2 hours before viewing",
+                  "content": "What to check: condition, appliances, utilities, lease terms",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "45-160/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Post-Viewing Feedback",
+                  "channel": "email",
+                  "timing": "+1 hour",
+                  "objective": "Gather viewing feedback",
+                  "triggerCondition": "1 hour after viewing",
+                  "content": "Quick survey: interested? Any concerns? Ready to apply?",
+                  "tools": ["Typeform", "SendGrid"],
+                  "estimatedReach": "44-158/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Similar Rental Properties",
+                  "channel": "email",
+                  "timing": "+3 hours",
+                  "objective": "Show alternatives",
+                  "triggerCondition": "3 hours after viewing",
+                  "content": "Similar rentals available in same area",
+                  "tools": ["SendGrid", "Rental Matching"],
+                  "estimatedReach": "40-150/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Application Assistance",
+                  "channel": "ma",
+                  "timing": "+1 day",
+                  "objective": "Help with application if interested",
+                  "triggerCondition": "Day after viewing if positive feedback",
+                  "content": "Help with application process, answer questions",
+                  "tools": ["HubSpot", "SendGrid"],
+                  "estimatedReach": "35-130/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "offer": {
+              "campaigns": [
+                {
+                  "name": "Application Submitted Confirmation",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Confirm application received",
+                  "triggerCondition": "Application submitted",
+                  "content": "Application received, review timeline, what's next",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "30-110/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Application Status Updates",
+                  "channel": "whatsapp",
+                  "timing": "As needed",
+                  "objective": "Keep tenant informed",
+                  "triggerCondition": "Application status changes",
+                  "content": "Real-time updates on application review, approval",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "28-105/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Credit Check Results",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Share screening results",
+                  "triggerCondition": "After credit/background check",
+                  "content": "Screening results and approval status",
+                  "tools": ["SendGrid", "Screening Platform"],
+                  "estimatedReach": "26-100/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Lease Terms Review",
+                  "channel": "email",
+                  "timing": "+2 days",
+                  "objective": "Review lease before signing",
+                  "triggerCondition": "Application approved",
+                  "content": "Lease terms, move-in costs, tenant responsibilities",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "24-95/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "Lease Signing Congratulations",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Celebrate lease signing",
+                  "triggerCondition": "Lease signed",
+                  "content": "Congratulations, move-in details, important dates",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "22-88/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Move-In Checklist",
+                  "channel": "email",
+                  "timing": "+1 day",
+                  "objective": "Prepare for move-in",
+                  "triggerCondition": "Day after lease signing",
+                  "content": "Move-in checklist: utilities, insurance, inspection",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "20-85/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Utilities Setup Guide",
+                  "channel": "email",
+                  "timing": "+3 days",
+                  "objective": "Help with utilities setup",
+                  "triggerCondition": "3 days after signing",
+                  "content": "Utility providers, setup process, contact information",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "19-82/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Move-In Day",
+                  "channel": "whatsapp",
+                  "timing": "On move-in day",
+                  "objective": "Support on move-in day",
+                  "triggerCondition": "Move-in day",
+                  "content": "Welcome! Contact for any move-in questions",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "18-80/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Property Condition Report",
+                  "channel": "email",
+                  "timing": "+2 days after move-in",
+                  "objective": "Document initial condition",
+                  "triggerCondition": "2 days after move-in",
+                  "content": "Submit property condition report with photos",
+                  "tools": ["SendGrid", "Inspection Platform"],
+                  "estimatedReach": "17-78/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "First Month Check-in",
+                  "channel": "email",
+                  "timing": "+30 days",
+                  "objective": "Ensure tenant satisfaction",
+                  "triggerCondition": "30 days after move-in",
+                  "content": "Everything going well? Any maintenance needs?",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "15-72/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "current-tenant",
+          "name": "Current Tenant",
+          "objective": "Maintain tenant satisfaction and retention",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": []
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": [
+                {
+                  "name": "Monthly Rent Reminder",
+                  "channel": "email",
+                  "timing": "Monthly",
+                  "objective": "Remind about rent payment",
+                  "triggerCondition": "5 days before rent due",
+                  "content": "Friendly rent reminder with payment options",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "300-850/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Maintenance Request Portal",
+                  "channel": "email",
+                  "timing": "As needed",
+                  "objective": "Handle maintenance requests",
+                  "triggerCondition": "Tenant submits maintenance request",
+                  "content": "Maintenance request received, expected timeline",
+                  "tools": ["SendGrid", "Maintenance System"],
+                  "estimatedReach": "100-320/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Lease Renewal Offer",
+                  "channel": "email",
+                  "timing": "-90 days before lease end",
+                  "objective": "Encourage lease renewal",
+                  "triggerCondition": "3 months before lease expires",
+                  "content": "Lease renewal offer with terms",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "80-250/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Tenant Satisfaction Survey",
+                  "channel": "email",
+                  "timing": "Every 6 months",
+                  "objective": "Measure tenant satisfaction",
+                  "triggerCondition": "Every 6 months",
+                  "content": "How are things? What can we improve?",
+                  "tools": ["Typeform", "SendGrid"],
+                  "estimatedReach": "150-400/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Move-Out Process Guide",
+                  "channel": "email",
+                  "timing": "-60 days if not renewing",
+                  "objective": "Guide through move-out",
+                  "triggerCondition": "Not renewing lease",
+                  "content": "Move-out checklist, deposit return process, timeline",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "40-140/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Referral Incentive Program",
+                  "channel": "email",
+                  "timing": "Quarterly",
+                  "objective": "Generate tenant referrals",
+                  "triggerCondition": "Every quarter",
+                  "content": "Refer a friend and get rent credit",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "120-380/month",
+                  "activeMonths": [1, 4, 7, 10]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "dormant-tenant",
+          "name": "Dormant Tenant Lead",
+          "objective": "Re-engage inactive rental seekers",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "New Rentals Available",
+                  "channel": "email",
+                  "timing": "+30 days no activity",
+                  "objective": "Re-engage with new inventory",
+                  "triggerCondition": "30 days dormant",
+                  "content": "New rentals just listed in your preferred areas",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "35-105/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "Rental Price Drops",
+                  "channel": "email",
+                  "timing": "+35 days",
+                  "objective": "Alert to price reductions",
+                  "triggerCondition": "35 days dormant + price drops",
+                  "content": "Rentals with reduced prices in your search area",
+                  "tools": ["SendGrid", "Price Monitor"],
+                  "estimatedReach": "30-95/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                },
+                {
+                  "name": "WhatsApp Still Looking Check",
+                  "channel": "whatsapp",
+                  "timing": "+45 days",
+                  "objective": "Quick status check",
+                  "triggerCondition": "45 days dormant",
+                  "content": "Quick check: still looking for rental or plans changed?",
+                  "tools": ["Twilio WhatsApp"],
+                  "estimatedReach": "25-80/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sellers",
+      "name": "Sellers Report",
+      "description": "Property sellers and vendors",
+      "color": "#D9B9A0",
+      "segments": [
+        {
+          "id": "active-seller",
+          "name": "Active Seller Lead",
+          "objective": "Convert seller inquiries into listings",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Seller Welcome Pack",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Share selling process information",
+                  "triggerCondition": "Selling inquiry received",
+                  "content": "Selling guide, market analysis, agent intro",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "30-120/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "landlords",
+      "name": "Landlords Report",
+      "description": "Property owners and investors",
+      "color": "#2C537A",
+      "segments": [
+        {
+          "id": "active-landlord",
+          "name": "Active Landlord Lead",
+          "objective": "Convert landlord inquiries into managed properties",
+          "stages": {
+            "discovery": {
+              "campaigns": []
+            },
+            "lead": {
+              "campaigns": [
+                {
+                  "name": "Property Management Welcome",
+                  "channel": "email",
+                  "timing": "Immediate",
+                  "objective": "Introduce property management services",
+                  "triggerCondition": "Landlord inquiry received",
+                  "content": "Management services overview and pricing",
+                  "tools": ["SendGrid"],
+                  "estimatedReach": "20-80/month",
+                  "activeMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                }
+              ]
+            },
+            "qualified": {
+              "campaigns": []
+            },
+            "viewing": {
+              "campaigns": []
+            },
+            "offer": {
+              "campaigns": []
+            },
+            "deal": {
+              "campaigns": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
