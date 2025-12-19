@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronDown, Mail, Phone, Filter, X, Calendar, Target, Zap, Clock, Users, ArrowRight, Home, Briefcase, Key, Building2, Building } from 'lucide-react';
+import { ChevronRight, ChevronDown, Mail, Phone, Filter, X, Calendar, Target, Zap, Clock, Users, ArrowRight, Home, Briefcase, Key, Building2, Building, FileText, MousePointer, Megaphone, User, TrendingUp, CalendarClock } from 'lucide-react';
 
 const CampaignArchitecture = () => {
   const [expandedReports, setExpandedReports] = useState([]);
@@ -340,7 +340,7 @@ const CampaignArchitecture = () => {
         </div>
       )}
 
-      {/* Campaign Detail Modal */}
+      {/* Campaign Detail Modal - UPDATED WITH ALL FIELDS */}
       {selectedCampaign && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -354,6 +354,13 @@ const CampaignArchitecture = () => {
                   <span className="text-sm font-medium text-gray-600 capitalize">
                     {selectedCampaign.channel === 'ma' ? 'Marketing Automation' : selectedCampaign.channel}
                   </span>
+                  {selectedCampaign.status && (
+                    <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${
+                      selectedCampaign.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                    }`}>
+                      {selectedCampaign.status}
+                    </span>
+                  )}
                 </div>
               </div>
               <button
@@ -365,38 +372,143 @@ const CampaignArchitecture = () => {
             </div>
 
             <div className="p-6 space-y-6">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Target className="w-5 h-5" style={{ color: '#2C537A' }} />
-                  <h3 className="font-semibold text-gray-900">Objective</h3>
+              {/* Campaign ID */}
+              {selectedCampaign.id && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <FileText className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Campaign ID</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7 font-mono text-sm">{selectedCampaign.id}</p>
                 </div>
-                <p className="text-gray-700 ml-7">{selectedCampaign.objective}</p>
-              </div>
+              )}
 
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Clock className="w-5 h-5" style={{ color: '#2C537A' }} />
-                  <h3 className="font-semibold text-gray-900">Timing</h3>
+              {/* Objective */}
+              {selectedCampaign.objective && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Target className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Objective</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.objective}</p>
                 </div>
-                <p className="text-gray-700 ml-7">{selectedCampaign.timing}</p>
-              </div>
+              )}
 
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Zap className="w-5 h-5" style={{ color: '#D9B9A0' }} />
-                  <h3 className="font-semibold text-gray-900">Trigger Condition</h3>
+              {/* Timing */}
+              {selectedCampaign.timing && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Clock className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Timing</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.timing}</p>
                 </div>
-                <p className="text-gray-700 ml-7">{selectedCampaign.triggerCondition}</p>
-              </div>
+              )}
 
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Mail className="w-5 h-5" style={{ color: '#2C537A' }} />
-                  <h3 className="font-semibold text-gray-900">Content</h3>
+              {/* Frequency */}
+              {selectedCampaign.frequency && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <CalendarClock className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Frequency</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.frequency}</p>
                 </div>
-                <p className="text-gray-700 ml-7">{selectedCampaign.content}</p>
-              </div>
+              )}
 
+              {/* Trigger Condition */}
+              {selectedCampaign.triggerCondition && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Zap className="w-5 h-5" style={{ color: '#D9B9A0' }} />
+                    <h3 className="font-semibold text-gray-900">Trigger Condition</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.triggerCondition}</p>
+                </div>
+              )}
+
+              {/* Subject Line */}
+              {selectedCampaign.subjectLine && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Mail className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Subject Line</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7 italic">"{selectedCampaign.subjectLine}"</p>
+                </div>
+              )}
+
+              {/* Content */}
+              {selectedCampaign.content && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <FileText className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Content</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.content}</p>
+                </div>
+              )}
+
+              {/* CTA */}
+              {selectedCampaign.cta && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <MousePointer className="w-5 h-5" style={{ color: '#D9B9A0' }} />
+                    <h3 className="font-semibold text-gray-900">Call to Action</h3>
+                  </div>
+                  <div className="ml-7">
+                    <span className="inline-block px-4 py-2 rounded-lg font-medium text-white" style={{ backgroundColor: '#2C537A' }}>
+                      {selectedCampaign.cta}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Target Audience */}
+              {selectedCampaign.targetAudience && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Users className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Target Audience</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.targetAudience}</p>
+                </div>
+              )}
+
+              {/* Estimated Reach */}
+              {selectedCampaign.estimatedReach && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Megaphone className="w-5 h-5" style={{ color: '#7BA0B2' }} />
+                    <h3 className="font-semibold text-gray-900">Estimated Reach</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.estimatedReach}</p>
+                </div>
+              )}
+
+              {/* Cohort */}
+              {selectedCampaign.cohort && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Users className="w-5 h-5" style={{ color: '#7BA0B2' }} />
+                    <h3 className="font-semibold text-gray-900">Cohort</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.cohort}</p>
+                </div>
+              )}
+
+              {/* Category */}
+              {selectedCampaign.category && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Filter className="w-5 h-5" style={{ color: '#7BA0B2' }} />
+                    <h3 className="font-semibold text-gray-900">Category</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.category}</p>
+                </div>
+              )}
+
+              {/* Tools & Platforms */}
               {selectedCampaign.tools && selectedCampaign.tools.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-2">
@@ -417,16 +529,65 @@ const CampaignArchitecture = () => {
                 </div>
               )}
 
-              {selectedCampaign.estimatedReach && (
+              {/* Owner */}
+              {selectedCampaign.owner && (
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <Users className="w-5 h-5" style={{ color: '#2C537A' }} />
-                    <h3 className="font-semibold text-gray-900">Estimated Reach</h3>
+                    <User className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Campaign Owner</h3>
                   </div>
-                  <p className="text-gray-700 ml-7">{selectedCampaign.estimatedReach}</p>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.owner}</p>
                 </div>
               )}
 
+              {/* Performance Score */}
+              {selectedCampaign.performanceScore && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="w-5 h-5" style={{ color: '#2C537A' }} />
+                    <h3 className="font-semibold text-gray-900">Performance Score</h3>
+                  </div>
+                  <div className="ml-7">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 bg-gray-200 rounded-full h-3">
+                        <div 
+                          className="h-3 rounded-full transition-all" 
+                          style={{ 
+                            width: `${selectedCampaign.performanceScore}%`,
+                            backgroundColor: selectedCampaign.performanceScore >= 80 ? '#22c55e' : 
+                                           selectedCampaign.performanceScore >= 60 ? '#eab308' : '#ef4444'
+                          }}
+                        />
+                      </div>
+                      <span className="text-lg font-bold text-gray-900">{selectedCampaign.performanceScore}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Created Date */}
+              {selectedCampaign.createdDate && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-5 h-5" style={{ color: '#7BA0B2' }} />
+                    <h3 className="font-semibold text-gray-900">Created Date</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.createdDate}</p>
+                </div>
+              )}
+
+              {/* Last Updated */}
+              {selectedCampaign.lastUpdated && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-5 h-5" style={{ color: '#7BA0B2' }} />
+                    <h3 className="font-semibold text-gray-900">Last Updated</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.lastUpdated}</p>
+                </div>
+              )}
+
+              {/* Active Months */}
               {selectedCampaign.activeMonths && selectedCampaign.activeMonths.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-3">
@@ -450,6 +611,30 @@ const CampaignArchitecture = () => {
                       </div>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {/* Week */}
+              {selectedCampaign.week && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-5 h-5" style={{ color: '#7BA0B2' }} />
+                    <h3 className="font-semibold text-gray-900">Week</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7">{selectedCampaign.week}</p>
+                </div>
+              )}
+
+              {/* Notes */}
+              {selectedCampaign.notes && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <FileText className="w-5 h-5" style={{ color: '#D9B9A0' }} />
+                    <h3 className="font-semibold text-gray-900">Notes</h3>
+                  </div>
+                  <p className="text-gray-700 ml-7 italic bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+                    {selectedCampaign.notes}
+                  </p>
                 </div>
               )}
             </div>
