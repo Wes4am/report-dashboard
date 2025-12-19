@@ -10,34 +10,33 @@ const CampaignArchitecture = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch data from JSON file (can be replaced with API call)
+  // Fetch data from backend API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Option 1: Fetch from local JSON file
-        const response = await fetch('/campaignData.json');
-        
-        // Option 2: Fetch from API (uncomment and modify URL when ready)
-        // const response = await fetch('https://your-api.com/campaign-data');
-        
-        // Option 3: Fetch from Google Sheets API (requires setup)
-        // const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/YOUR_SHEET_ID/values/Sheet1?key=YOUR_API_KEY');
+        // FIXED: Now pointing to your Render backend
+        const response = await fetch('https://report-dashboard-backend-srve.onrender.com/api/campaigns');
         
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
         }
         
         const jsonData = await response.json();
+        console.log('Campaign data loaded:', jsonData);
         setData(jsonData);
         setLoading(false);
       } catch (err) {
         setError(err.message);
         setLoading(false);
-        console.error('Error fetching data:', err);
+        console.error('Error fetching campaign data:', err);
       }
     };
 
     fetchData();
+    
+    // Optional: Refresh data every 5 minutes
+    const interval = setInterval(fetchData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   // Icon mapping
@@ -136,7 +135,13 @@ const CampaignArchitecture = () => {
         <div className="text-center bg-red-50 border border-red-200 rounded-lg p-6 max-w-md">
           <p className="text-red-600 font-semibold mb-2">Error loading data</p>
           <p className="text-red-500 text-sm">{error}</p>
-          <p className="text-gray-600 text-sm mt-2">Make sure campaignData.json is in the public folder</p>
+          <p className="text-gray-600 text-sm mt-4">Backend API: https://report-dashboard-backend-srve.onrender.com</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Retry
+          </button>
         </div>
       </div>
     );
