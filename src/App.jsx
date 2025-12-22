@@ -232,40 +232,46 @@ const CampaignArchitecture = () => {
                             <div className="p-4 bg-white">
                               <div className="flex items-center gap-2 overflow-x-auto pb-2">
                                 {stages.map((stage, idx) => {
-                                  const count = getStageCount(segment, stage.id);
-                                  const hasNoCampaigns = count === 0;
+  const campaignCount = getStageCount(segment, stage.id);
+  const peopleCount = segment.peopleCounts?.[stage.id] || 0;
+  const hasNoCampaigns = campaignCount === 0;
 
-                                  return (
-                                    <React.Fragment key={stage.id}>
-                                      <button
-                                        onClick={() => !hasNoCampaigns && openStagePanel(report, segment, stage.id, stage.name)}
-                                        disabled={hasNoCampaigns}
-                                        className={`flex-shrink-0 px-4 py-3 rounded-lg border-2 transition-all min-w-[140px] ${
-                                          hasNoCampaigns
-                                            ? 'bg-gray-50 border-gray-200 opacity-50 cursor-not-allowed'
-                                            : 'hover:shadow-md cursor-pointer'
-                                        }`}
-                                        style={!hasNoCampaigns ? {
-                                          backgroundColor: `${stage.color}15`,
-                                          borderColor: stage.color,
-                                        } : {}}
-                                      >
-                                        <div className="text-center">
-                                          <div className="font-semibold text-sm mb-1" style={{ color: hasNoCampaigns ? '#9CA3AF' : stage.color }}>
-                                            {stage.name}
-                                          </div>
-                                          <div className={`text-lg font-bold ${hasNoCampaigns ? 'text-gray-400' : ''}`}
-                                            style={!hasNoCampaigns ? { color: stage.color } : {}}>
-                                            {count}
-                                          </div>
-                                        </div>
-                                      </button>
-                                      {idx < stages.length - 1 && (
-                                        <ArrowRight className="w-5 h-5 text-gray-300 flex-shrink-0" />
-                                      )}
-                                    </React.Fragment>
-                                  );
-                                })}
+  return (
+    <React.Fragment key={stage.id}>
+      <button
+        onClick={() => !hasNoCampaigns && openStagePanel(report, segment, stage.id, stage.name)}
+        disabled={hasNoCampaigns}
+        className={`flex-shrink-0 px-4 py-3 rounded-lg border-2 transition-all min-w-[140px] ${
+          hasNoCampaigns
+            ? 'bg-gray-50 border-gray-200 opacity-50 cursor-not-allowed'
+            : 'hover:shadow-md cursor-pointer'
+        }`}
+        style={!hasNoCampaigns ? {
+          backgroundColor: `${stage.color}15`,
+          borderColor: stage.color,
+        } : {}}
+      >
+        <div className="text-center">
+          <div className="font-semibold text-sm mb-1" style={{ color: hasNoCampaigns ? '#9CA3AF' : stage.color }}>
+            {stage.name}
+          </div>
+          {/* PEOPLE COUNT - Large */}
+          <div className={`text-2xl font-bold ${hasNoCampaigns ? 'text-gray-400' : ''}`}
+            style={!hasNoCampaigns ? { color: stage.color } : {}}>
+            {peopleCount.toLocaleString()}
+          </div>
+          {/* CAMPAIGN COUNT - Small below */}
+          <div className="text-xs mt-1 opacity-70" style={{ color: hasNoCampaigns ? '#9CA3AF' : stage.color }}>
+            {campaignCount} campaign{campaignCount !== 1 ? 's' : ''}
+          </div>
+        </div>
+      </button>
+      {idx < stages.length - 1 && (
+        <ArrowRight className="w-5 h-5 text-gray-300 flex-shrink-0" />
+      )}
+    </React.Fragment>
+  );
+})}
                               </div>
                             </div>
                           )}
