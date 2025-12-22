@@ -448,7 +448,28 @@ const CampaignArchitecture = () => {
                   <p className="text-gray-700 ml-7">{selectedCampaign.content}</p>
                 </div>
               )}
+              {selectedCampaign.content && (
+  <div>
+    <div className="flex items-center gap-2 mb-2">
+      <FileText className="w-5 h-5" style={{ color: '#2C537A' }} />
+      <h3 className="font-semibold text-gray-900">Content</h3>
+    </div>
+    <p className="text-gray-700 ml-7">{selectedCampaign.content}</p>
+  </div>
+)}
 
+{/* Copy - ADD THIS NEW SECTION */}
+{selectedCampaign.copy && (
+  <div>
+    <div className="flex items-center gap-2 mb-2">
+      <FileText className="w-5 h-5" style={{ color: '#2C537A' }} />
+      <h3 className="font-semibold text-gray-900">Copy</h3>
+    </div>
+    <p className="text-gray-700 ml-7 bg-blue-50 p-3 rounded-lg border border-blue-200">
+      {selectedCampaign.copy}
+    </p>
+  </div>
+)}
               {/* CTA */}
               {selectedCampaign.cta && (
                 <div>
