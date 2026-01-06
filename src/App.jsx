@@ -15,7 +15,7 @@ const CampaignArchitecture = () => {
     const fetchData = async () => {
       try {
         // FIXED: Now pointing to your Render backend
-        const response = await fetch('https://report-dashboard-backend-srve.onrender.com/api/campaigns');
+        const response = await fetch('https://report-dashboard-backend-iniq.onrender.com/api/campaigns');
         
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
