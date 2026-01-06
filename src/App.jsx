@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronDown, Mail, Phone, Filter, X, Calendar, Target, Zap, Clock, Users, ArrowRight, Home, Briefcase, Key, Building2, Building, FileText, MousePointer, Megaphone, User, TrendingUp, CalendarClock, CheckCircle2, Circle } from 'lucide-react';
+import { ChevronRight, ChevronDown, Mail, Phone, Filter, X, Calendar, Target, Zap, Clock, Users, ArrowRight, Home, Briefcase, Key, Building2, Building, FileText, MousePointer, Megaphone, User, TrendingUp, CalendarClock, Folder } from 'lucide-react';
 
 const CampaignArchitecture = () => {
   const [expandedReports, setExpandedReports] = useState([]);
-  const [expandedSegments, setExpandedSegments] = useState([]);
-  const [expandedCampaigns, setExpandedCampaigns] = useState([]);
+  const [expandedCampaignIds, setExpandedCampaignIds] = useState([]);
+  const [expandedFlows, setExpandedFlows] = useState([]);
+  const [selectedStage, setSelectedStage] = useState(null);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -84,32 +85,61 @@ const CampaignArchitecture = () => {
     );
   };
 
-  const toggleSegment = (segmentKey) => {
-    setExpandedSegments(prev =>
-      prev.includes(segmentKey)
-        ? prev.filter(id => id !== segmentKey)
-        : [...prev, segmentKey]
+  const toggleCampaignId = (campaignIdKey) => {
+    setExpandedCampaignIds(prev =>
+      prev.includes(campaignIdKey)
+        ? prev.filter(id => id !== campaignIdKey)
+        : [...prev, campaignIdKey]
     );
   };
 
-  const toggleCampaign = (campaignKey) => {
-    setExpandedCampaigns(prev =>
-      prev.includes(campaignKey)
-        ? prev.filter(id => id !== campaignKey)
-        : [...prev, campaignKey]
+  const toggleFlow = (flowKey) => {
+    setExpandedFlows(prev =>
+      prev.includes(flowKey)
+        ? prev.filter(id => id !== flowKey)
+        : [...prev, flowKey]
     );
   };
 
-  const getTotalCampaigns = (segments) => {
-    return segments.reduce((total, segment) => {
-      return total + (segment.campaigns?.length || 0);
+  const openStagePanel = (report, campaignId, flow, stageId, stageName) => {
+    const campaigns = flow.stages[stageId]?.campaigns || [];
+    
+    setSelectedStage({
+      reportId: report.id,
+      campaignIdGroup: campaignId.name,
+      flowId: flow.id,
+      stageId,
+      stageName,
+      campaigns
+    });
+  };
+
+  const getStageCount = (flow, stageId) => {
+    return flow.stages[stageId]?.campaigns?.length || 0;
+  };
+
+  const getTotalCampaigns = (campaignIds) => {
+    return campaignIds.reduce((total, campaignIdGroup) => {
+      return total + campaignIdGroup.flows.reduce((flowTotal, flow) => {
+        return flowTotal + Object.values(flow.stages).reduce((stageSum, stage) => {
+          return stageSum + (stage.campaigns?.length || 0);
+        }, 0);
+      }, 0);
     }, 0);
   };
 
-  const getActiveStages = (campaign) => {
-    return Object.entries(campaign.stages || {})
-      .filter(([_, stage]) => stage.active)
-      .map(([stageId, _]) => stageId);
+  const getCampaignIdTotal = (flows) => {
+    return flows.reduce((total, flow) => {
+      return total + Object.values(flow.stages).reduce((sum, stage) => {
+        return sum + (stage.campaigns?.length || 0);
+      }, 0);
+    }, 0);
+  };
+
+  const getFlowTotal = (flow) => {
+    return Object.values(flow.stages).reduce((sum, stage) => {
+      return sum + (stage.campaigns?.length || 0);
+    }, 0);
   };
 
   // If still loading, show loading state
@@ -157,8 +187,8 @@ const CampaignArchitecture = () => {
         <div className="space-y-4">
           {reports.map(report => {
             const isExpanded = expandedReports.includes(report.id);
-            const reportSegments = report.segments || [];
-            const totalCampaigns = getTotalCampaigns(reportSegments);
+            const reportCampaignIds = report.campaignIds || [];
+            const totalCampaigns = getTotalCampaigns(reportCampaignIds);
             const IconComponent = iconMap[report.id] || Home;
 
             return (
@@ -189,137 +219,111 @@ const CampaignArchitecture = () => {
                   </div>
                 </div>
 
-                {/* Segments Level */}
+                {/* Campaign ID Level (Lomond, Octopus, Strala, etc.) */}
                 {isExpanded && (
                   <div className="p-6 space-y-3">
-                    {reportSegments.map(segment => {
-                      const segmentKey = `${report.id}-${segment.id}`;
-                      const isSegmentExpanded = expandedSegments.includes(segmentKey);
-                      const segmentCampaigns = segment.campaigns || [];
+                    {reportCampaignIds.map(campaignIdGroup => {
+                      const campaignIdKey = `${report.id}-${campaignIdGroup.id}`;
+                      const isCampaignIdExpanded = expandedCampaignIds.includes(campaignIdKey);
+                      const campaignIdTotal = getCampaignIdTotal(campaignIdGroup.flows);
 
                       return (
-                        <div key={segmentKey} className="border-2 border-gray-200 rounded-lg overflow-hidden">
-                          {/* Segment Header */}
+                        <div key={campaignIdKey} className="border-2 border-gray-300 rounded-lg overflow-hidden">
+                          {/* Campaign ID Header (e.g., "Lomond") */}
                           <div
-                            onClick={() => toggleSegment(segmentKey)}
-                            className="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer transition-all flex items-center justify-between"
+                            onClick={() => toggleCampaignId(campaignIdKey)}
+                            className="bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 p-4 cursor-pointer transition-all flex items-center justify-between border-b-2 border-blue-200"
                           >
                             <div className="flex items-center gap-3">
-                              {isSegmentExpanded ? (
-                                <ChevronDown className="w-5 h-5 text-gray-600" />
+                              {isCampaignIdExpanded ? (
+                                <ChevronDown className="w-5 h-5 text-blue-700" />
                               ) : (
-                                <ChevronRight className="w-5 h-5 text-gray-600" />
+                                <ChevronRight className="w-5 h-5 text-blue-700" />
                               )}
+                              <div className="bg-blue-600 bg-opacity-10 rounded-lg p-2">
+                                <Folder className="w-5 h-5 text-blue-700" />
+                              </div>
                               <div>
-                                <h3 className="text-lg font-semibold text-gray-900">{segment.name}</h3>
-                                <p className="text-xs text-gray-500">{segment.objective}</p>
+                                <h3 className="text-lg font-bold text-blue-900">{campaignIdGroup.name}</h3>
+                                <p className="text-xs text-blue-600">{campaignIdGroup.flows.length} flow{campaignIdGroup.flows.length !== 1 ? 's' : ''}</p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-sm text-gray-600">{segmentCampaigns.length} campaigns</span>
+                            <div className="text-right">
+                              <span className="text-2xl font-bold text-blue-900">{campaignIdTotal}</span>
+                              <span className="text-sm text-blue-600 ml-2">campaigns</span>
                             </div>
                           </div>
 
-                          {/* Campaigns List (Grouped by Campaign ID) */}
-                          {isSegmentExpanded && (
-                            <div className="p-4 bg-white space-y-3">
-                              {segmentCampaigns.map(campaign => {
-                                const campaignKey = `${segmentKey}-${campaign.id}`;
-                                const isCampaignExpanded = expandedCampaigns.includes(campaignKey);
-                                const activeStages = getActiveStages(campaign);
-                                const channelColors = getChannelColor(campaign.channel);
+                          {/* Flows Level (e.g., "Lomond flow version 1") */}
+                          {isCampaignIdExpanded && (
+                            <div className="p-4 space-y-3 bg-gray-50">
+                              {campaignIdGroup.flows.map(flow => {
+                                const flowKey = `${campaignIdKey}-${flow.id}`;
+                                const isFlowExpanded = expandedFlows.includes(flowKey);
+                                const flowCampaignCount = getFlowTotal(flow);
 
                                 return (
-                                  <div key={campaignKey} className="border-2 rounded-lg overflow-hidden" style={{ borderColor: channelColors.border }}>
-                                    {/* Campaign Header */}
-                                    <div className="flex items-center justify-between p-4 bg-gray-50">
-                                      <div className="flex items-center gap-3 flex-1">
-                                        <button
-                                          onClick={() => toggleCampaign(campaignKey)}
-                                          className="text-gray-600 hover:text-gray-900"
-                                        >
-                                          {isCampaignExpanded ? (
-                                            <ChevronDown className="w-5 h-5" />
-                                          ) : (
-                                            <ChevronRight className="w-5 h-5" />
-                                          )}
-                                        </button>
-                                        <div className="rounded-lg p-2 text-white" style={{ backgroundColor: channelColors.bg }}>
-                                          {getChannelIcon(campaign.channel)}
-                                        </div>
-                                        <div className="flex-1">
-                                          <h4 className="font-semibold text-gray-900">{campaign.name}</h4>
-                                          <div className="flex items-center gap-3 text-xs text-gray-500 mt-1">
-                                            <span className="capitalize">{campaign.channel}</span>
-                                            <span>•</span>
-                                            <span>{activeStages.length} stage{activeStages.length !== 1 ? 's' : ''}</span>
-                                            {campaign.timing && (
-                                              <>
-                                                <span>•</span>
-                                                <span>{campaign.timing}</span>
-                                              </>
-                                            )}
-                                          </div>
+                                  <div key={flowKey} className="border-2 border-gray-200 rounded-lg overflow-hidden bg-white">
+                                    {/* Flow Header */}
+                                    <div
+                                      onClick={() => toggleFlow(flowKey)}
+                                      className="bg-gray-50 hover:bg-gray-100 p-4 cursor-pointer transition-all flex items-center justify-between"
+                                    >
+                                      <div className="flex items-center gap-3">
+                                        {isFlowExpanded ? (
+                                          <ChevronDown className="w-5 h-5 text-gray-600" />
+                                        ) : (
+                                          <ChevronRight className="w-5 h-5 text-gray-600" />
+                                        )}
+                                        <div>
+                                          <h4 className="text-base font-semibold text-gray-900">{flow.name}</h4>
+                                          <p className="text-xs text-gray-500">{flow.objective}</p>
                                         </div>
                                       </div>
-                                      <button
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          setSelectedCampaign(campaign);
-                                        }}
-                                        className="px-3 py-1 text-sm rounded-lg hover:opacity-80 transition-all text-white"
-                                        style={{ backgroundColor: channelColors.bg }}
-                                      >
-                                        View Details
-                                      </button>
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-sm text-gray-600">{flowCampaignCount} campaign{flowCampaignCount !== 1 ? 's' : ''}</span>
+                                      </div>
                                     </div>
 
-                                    {/* Stage Pipeline for this Campaign */}
-                                    {isCampaignExpanded && (
+                                    {/* Pipeline Stages */}
+                                    {isFlowExpanded && (
                                       <div className="p-4 bg-white">
                                         <div className="flex items-center gap-2 overflow-x-auto pb-2">
                                           {stages.map((stage, idx) => {
-                                            const isActive = campaign.stages[stage.id]?.active;
-                                            const stageDetails = campaign.stages[stage.id]?.details;
-                                            const peopleCount = segment.peopleCounts?.[stage.id] || 0;
+                                            const campaignCount = getStageCount(flow, stage.id);
+                                            const peopleCount = flow.peopleCounts?.[stage.id] || 0;
+                                            const hasNoCampaigns = campaignCount === 0;
 
                                             return (
                                               <React.Fragment key={stage.id}>
-                                                <div
+                                                <button
+                                                  onClick={() => !hasNoCampaigns && openStagePanel(report, campaignIdGroup, flow, stage.id, stage.name)}
+                                                  disabled={hasNoCampaigns}
                                                   className={`flex-shrink-0 px-4 py-3 rounded-lg border-2 transition-all min-w-[140px] ${
-                                                    !isActive
-                                                      ? 'bg-gray-50 border-gray-200 opacity-40'
-                                                      : 'border-2'
+                                                    hasNoCampaigns
+                                                      ? 'bg-gray-50 border-gray-200 opacity-50 cursor-not-allowed'
+                                                      : 'hover:shadow-md cursor-pointer'
                                                   }`}
-                                                  style={isActive ? {
+                                                  style={!hasNoCampaigns ? {
                                                     backgroundColor: `${stage.color}15`,
                                                     borderColor: stage.color,
                                                   } : {}}
                                                 >
                                                   <div className="text-center">
-                                                    <div className="flex items-center justify-center gap-2 mb-1">
-                                                      {isActive ? (
-                                                        <CheckCircle2 className="w-4 h-4" style={{ color: stage.color }} />
-                                                      ) : (
-                                                        <Circle className="w-4 h-4 text-gray-300" />
-                                                      )}
-                                                      <div className="font-semibold text-sm" style={{ color: isActive ? stage.color : '#9CA3AF' }}>
-                                                        {stage.name}
-                                                      </div>
+                                                    <div className="font-semibold text-sm mb-1" style={{ color: hasNoCampaigns ? '#9CA3AF' : stage.color }}>
+                                                      {stage.name}
                                                     </div>
-                                                    <div className={`text-2xl font-bold ${!isActive ? 'text-gray-400' : ''}`}
-                                                      style={isActive ? { color: stage.color } : {}}>
+                                                    <div className={`text-2xl font-bold ${hasNoCampaigns ? 'text-gray-400' : ''}`}
+                                                      style={!hasNoCampaigns ? { color: stage.color } : {}}>
                                                       {peopleCount.toLocaleString()}
                                                     </div>
-                                                    {isActive && stageDetails?.specificTiming && (
-                                                      <div className="text-xs mt-1 opacity-70" style={{ color: stage.color }}>
-                                                        {stageDetails.specificTiming}
-                                                      </div>
-                                                    )}
+                                                    <div className="text-xs mt-1 opacity-70" style={{ color: hasNoCampaigns ? '#9CA3AF' : stage.color }}>
+                                                      {campaignCount} campaign{campaignCount !== 1 ? 's' : ''}
+                                                    </div>
                                                   </div>
-                                                </div>
+                                                </button>
                                                 {idx < stages.length - 1 && (
-                                                  <ArrowRight className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-gray-400' : 'text-gray-200'}`} />
+                                                  <ArrowRight className="w-5 h-5 text-gray-300 flex-shrink-0" />
                                                 )}
                                               </React.Fragment>
                                             );
@@ -342,6 +346,69 @@ const CampaignArchitecture = () => {
           })}
         </div>
       </div>
+
+      {/* Side Panel for Stage Campaigns */}
+      {selectedStage && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-end">
+          <div className="bg-white h-full w-full max-w-2xl shadow-2xl overflow-y-auto">
+            {/* Panel Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between z-10">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                  {selectedStage.stageName} Stage
+                </h2>
+                <p className="text-sm text-gray-600">
+                  {selectedStage.campaignIdGroup} → {selectedStage.flowId}
+                </p>
+                <p className="text-sm text-gray-500">{selectedStage.campaigns.length} campaigns in this stage</p>
+              </div>
+              <button
+                onClick={() => setSelectedStage(null)}
+                className="text-gray-400 hover:text-gray-600 p-2"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Campaign List */}
+            <div className="p-6 space-y-3">
+              {selectedStage.campaigns.map((campaign, idx) => {
+                const channelColors = getChannelColor(campaign.channel);
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setSelectedCampaign(campaign)}
+                    className="rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border-2"
+                    style={{
+                      backgroundColor: `${channelColors.bg}10`,
+                      borderColor: channelColors.border
+                    }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="rounded-lg p-3 text-white" style={{ backgroundColor: channelColors.bg }}>
+                        {getChannelIcon(campaign.channel)}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-gray-900 mb-2">{campaign.name}</h3>
+                        <div className="flex items-center gap-4 text-sm text-gray-600">
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-4 h-4" />
+                            <span>{campaign.timing}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <span className="capitalize">{campaign.channel}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Campaign Detail Modal */}
       {selectedCampaign && (
@@ -375,7 +442,6 @@ const CampaignArchitecture = () => {
             </div>
 
             <div className="p-6 space-y-6">
-              {/* Campaign ID */}
               {selectedCampaign.id && (
                 <div>
                   <div className="flex items-center gap-2 mb-2">
@@ -386,28 +452,6 @@ const CampaignArchitecture = () => {
                 </div>
               )}
 
-              {/* Active Stages */}
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Target className="w-5 h-5" style={{ color: '#2C537A' }} />
-                  <h3 className="font-semibold text-gray-900">Active Stages</h3>
-                </div>
-                <div className="ml-7 flex flex-wrap gap-2">
-                  {Object.entries(selectedCampaign.stages || {})
-                    .filter(([_, stage]) => stage.active)
-                    .map(([stageId, _]) => {
-                      const stageInfo = stages.find(s => s.id === stageId);
-                      return (
-                        <span key={stageId} className="px-3 py-1 rounded-full text-sm font-medium text-white"
-                          style={{ backgroundColor: stageInfo?.color || '#2C537A' }}>
-                          {stageInfo?.name || stageId}
-                        </span>
-                      );
-                    })}
-                </div>
-              </div>
-
-              {/* Rest of campaign details... */}
               {selectedCampaign.objective && (
                 <div>
                   <div className="flex items-center gap-2 mb-2">
@@ -415,16 +459,6 @@ const CampaignArchitecture = () => {
                     <h3 className="font-semibold text-gray-900">Objective</h3>
                   </div>
                   <p className="text-gray-700 ml-7">{selectedCampaign.objective}</p>
-                </div>
-              )}
-
-              {selectedCampaign.timing && (
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-5 h-5" style={{ color: '#2C537A' }} />
-                    <h3 className="font-semibold text-gray-900">Timing</h3>
-                  </div>
-                  <p className="text-gray-700 ml-7">{selectedCampaign.timing}</p>
                 </div>
               )}
 
